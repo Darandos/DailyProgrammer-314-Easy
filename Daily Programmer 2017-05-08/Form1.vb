@@ -5,7 +5,7 @@
 
 		Dim compare As Comparison(Of String) =
 			Function(x As String, y As String)
-				For i As Integer = 0 To Math.Min(x.Length, y.Length)
+				For i As Integer = 0 To Math.Min(x.Length, y.Length) - 1
 					Dim xInt As Integer = Val(x.Chars(i))
 					Dim yInt As Integer = Val(y.Chars(i))
 
@@ -26,6 +26,14 @@
 				End If
 				Return result
 			End Function
+
+		Array.Sort(numbers, compare)
+
+		Dim message As String = "Least: " + String.Join(String.Empty, numbers) + vbNewLine
+		Array.Reverse(numbers)
+		message += "Greatest: " + String.Join(String.Empty, numbers)
+
+		MessageBox.Show(message)
 	End Sub
 
 End Class
